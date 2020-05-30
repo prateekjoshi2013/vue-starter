@@ -6,20 +6,21 @@
         Build-A-Bot</li></ul></nav>
     </header>
     <main>
-    <RobotBuilder/>
+    <router-view/>
     </main>
   </div>
 </template>
 
 <script>
 // import HomePage from './home/HomePage.vue';
-import RobotBuilder from './build/RobotBuilder.vue';
+// import RobotBuilder from './build/RobotBuilder.vue';
 
 export default {
   name: 'App',
-  components: {
-    RobotBuilder,
-  },
+//   components: {
+//     // RobotBuilder,
+//     HomePage,
+//   },
 };
 </script>
 <style>
