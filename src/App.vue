@@ -2,8 +2,9 @@
   <div id="app">
     <header>
       <nav><ul><li class="nav-item">
+        <router-link class="nav-link" :to="{name:'Home'}">
         <img class="logo" src="./assets/build-a-bot-logo.png" />
-        Build-A-Bot</li></ul></nav>
+        Build-A-Bot</router-link></li></ul></nav>
     </header>
     <main>
     <router-view/>
@@ -60,5 +61,9 @@ ul {
   padding: 5px 10px;
   font-size: 22px;
   border-right: 1px solid #bbb;
+}
+.nav-link{
+  text-decoration:none;
+  color:inherit;
 }
 </style>

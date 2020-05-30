@@ -4,7 +4,7 @@
       <img class="robot" src="../assets/robot-home.png" aria-1hidden="true"/>
   </div>
     <div>
-      <a href="">Get started </a> building your first robot />
+      <router-link to="/build">Get started </router-link> building your first robot
   </div>
   </div>
 </template>
@@ -25,6 +25,10 @@ export default {
 }
 .robot{
   height : 300px;
+}
+.nav-link{
+  text-decoration:none;
+  color:inherit;
 }
 
 </style>
