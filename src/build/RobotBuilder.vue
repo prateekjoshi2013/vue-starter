@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
 <template>
-  <div class="content">
+  <div v-if="availableParts" class="content">
           <div class="preview">
               <CollapsibleSection>
       <div class="preview-content">
@@ -67,7 +67,6 @@
   </div>
 </template>
 <script>
-import availableParts from '../data/parts';
 import createdHookMixin from './created-hook-mixin';
 import PartSelector from './PartSelector.vue';
 import CollapsibleSection from '../shared/CollapsibleSection.vue';
@@ -86,9 +85,11 @@ export default {
     next(response);
   },
   components: { PartSelector, CollapsibleSection },
+  created() {
+    this.$store.dispatch('getParts');
+  },
   data() {
     return {
-      availableParts,
       cart: [],
       addedToCart: false,
       selectedRobot: {
@@ -104,6 +105,9 @@ export default {
   computed: {
     saleBorderClass() {
       return this.selectedRobot.head.onSale ? 'sale-border' : '';
+    },
+    availableParts() {
+      return this.$store.state.parts;
     },
   },
   methods: {
