@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 <template>
   <div class="content">
           <div class="preview">
@@ -74,11 +75,22 @@ import CollapsibleSection from '../shared/CollapsibleSection.vue';
 export default {
 
   name: 'RobotBuilder',
+
+  beforeRouteLeave(to, from, next) {
+    if (this.addedToCart) {
+      next(true);
+    }
+    /* eslint no-alert: 0 */
+    /* eslint no-restricted-globals: 0 */
+    const response = confirm('You have not added your robot to your cart,are you sure you want to leave?');
+    next(response);
+  },
   components: { PartSelector, CollapsibleSection },
   data() {
     return {
       availableParts,
       cart: [],
+      addedToCart: false,
       selectedRobot: {
         head: {},
         leftArm: {},
@@ -93,16 +105,15 @@ export default {
     saleBorderClass() {
       return this.selectedRobot.head.onSale ? 'sale-border' : '';
     },
-    // headerBorderStyle() {
-    //   return { border: this.selectedRobot.head.onSale ? '3px solid red' : '3px solid grey' };
-    // },
   },
   methods: {
     addToCart() {
       const robot = this.selectedRobot;
       const cost = robot.head.cost
        + robot.leftArm.cost + robot.rightArm.cost + robot.torso.cost + robot.base.cost;
-      this.cart.push({ ...robot, cost });
+      this.cart.push();
+      this.$store.commit('addRobotToCart', { ...robot, cost });
+      this.addedToCart = true;
     },
   },
 };
