@@ -5,10 +5,14 @@ export default {
   state: {
     cart: [],
     parts: null,
+    foo: 'robots-foo',
   },
   getters: {
     cartSaleItems(state) {
       return state.cart.filter((item) => item.head.onSale);
+    },
+    foo(state) {
+      return `robots-getter/${state.foo}`;
     },
   },
   mutations: {
