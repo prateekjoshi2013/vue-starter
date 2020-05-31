@@ -8,7 +8,7 @@ export default new Vuex.Store({
     cart: [],
   },
   mutations: {
-    addRootToCart(state, robot) {
+    addRobotToCart(state, robot) {
       state.cart.push(robot);
     },
   },
