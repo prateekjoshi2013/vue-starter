@@ -14,7 +14,7 @@ export default {
   actions: {
     signIn({ commit }) {
       axios.post('/api/sign-in')
-        .then(result => commit('updateCurrentUser', result.data))
+        .then((result) => commit('updateCurrentUser', result.data))
         .catch(console.error);
     },
   },
