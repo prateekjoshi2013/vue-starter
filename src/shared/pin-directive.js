@@ -1,8 +1,9 @@
 /* eslint-disable no-param-reassign */
 export default {
-  bind: (element) => {
+  bind: (element, binding) => {
+    Object.keys(binding.value).forEach((key) => {
+      element.style[key] = binding.value[key];
+    });
     element.style.position = 'absolute';
-    element.style.bottom = '5px';
-    element.style.right = '5px';
   },
 };
